@@ -26,7 +26,7 @@ import com.example.demo.service.PostService;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@RestController
+@Controller
 public class AuthController {
 
 	@Autowired
@@ -66,43 +66,5 @@ public class AuthController {
 	    return username.equals("zeroadmin") && password.equals("zerowastage");
 	}
 
-
-	@GetMapping("/posts")
-	public List<Post> getAll() {
-	    List<Post> postList = service.getAll();
-	    ModelAndView modelAndView = new ModelAndView("user/edit_post");
-	    modelAndView.addObject("postList", postList);
-	    return postList;
-	}
-	
-	@GetMapping("/post/{id}")
-	public ResponseEntity<?> getById(@PathVariable int id) {
-		ResponseEntity<?> postList= service.getData(id);
-		return postList;
-	}
-	
-	
-	@PostMapping("/create")
-	public String createNew(@RequestBody Post post) {
-		service.createPost(post);
-		return "done creation";
-	}
-	
-	@PutMapping("/update/{id}")
-	public String updateValue(@PathVariable int id,@RequestBody Post post) {
-		String value=service.updatePost(id,post);
-		return value;
-	}
-	
-	@DeleteMapping("delete/{id}")
-	public String deletion(@PathVariable int id) {
-		String value= service.deletePost(id);
-		return value;
-	}
-	
-	@GetMapping("/posts/{id}/{image}")
-	public List<?> findByIdAndImage(@PathVariable int id,@PathVariable String image){
-		return service.findByIdAndImage(id, image);
-	}
 
 }

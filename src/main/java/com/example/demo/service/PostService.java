@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.model.AdminUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,5 +61,10 @@ public class PostService {
 		List<Post> post= repository.findByIdAndImage(id,name);
 		return post;
 	}
-	
+
+	/*Real Implementations*/
+
+	public AdminUser createAdminUser(String userName, String password) {
+		return null;
+	}
 }
